@@ -31,17 +31,17 @@ def build_state(n: int,
 
     # bordes verticales
     # tras rotar antihorario:
-    #   1 ("<") -> original apuntaba arriba (^) -> arriba > abajo -> ">"
-    #   2 (">") -> original apuntaba abajo (v)  -> arriba < abajo -> "<"
+    #   1 ("<") -> original era ^ (apunta arriba) -> arriba < abajo -> "<"
+    #   2 (">") -> original era v (apunta abajo)  -> arriba > abajo -> ">"
     v_constraints = []
     for i in range(n - 1):
         row = []
         for j in range(n):
             v = int(v_pred[i][j])
             if v == 1:
-                row.append(">")
-            elif v == 2:
                 row.append("<")
+            elif v == 2:
+                row.append(">")
             else:
                 row.append(None)
         v_constraints.append(row)
