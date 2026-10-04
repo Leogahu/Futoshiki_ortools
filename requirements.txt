@@ -1,0 +1,22 @@
+# ============================================================
+# Futoshiki Solver - Dependencias
+# ============================================================
+# Python 3.10+ (probado con 3.11.9)
+
+# --- Deep Learning ---
+torch>=2.0.0
+torchvision>=0.15.0
+
+# --- Visión Computacional ---
+opencv-python>=4.8.0
+Pillow>=10.0.0
+
+# --- Constraint Programming ---
+ortools>=9.7.0
+
+# --- Interfaz web ---
+streamlit>=1.30.0
+
+# --- Utilidades ---
+numpy>=1.24.0
+matplotlib>=3.7.0
