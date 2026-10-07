@@ -279,25 +279,6 @@ st.markdown("""
         font-size: 0.9rem !important;
     }
 
-    /* ===== radio ===== */
-    [data-testid="stRadio"] > div {
-        display: flex;
-        gap: 0.5rem;
-    }
-    [data-testid="stRadio"] label {
-        background: #f8fbff;
-        border: 1px solid rgba(147, 197, 253, 0.45);
-        border-radius: 10px;
-        padding: 0.6rem 1rem;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        font-weight: 500;
-    }
-    [data-testid="stRadio"] label:hover {
-        border-color: #3b82f6;
-        background: #eff6ff;
-    }
-
     /* ===== botones con degradado animado ===== */
     .stButton > button {
         border-radius: 12px;
@@ -644,33 +625,19 @@ st.markdown("""
 
 
 # =====================================================================
-# Selector de modo
+# Selector de archivo (Sin cámara)
 # =====================================================================
 st.markdown('<div class="card">', unsafe_allow_html=True)
 st.markdown('<div class="card-title"><span class="ico">📥</span>Entrada de imagen</div>', unsafe_allow_html=True)
 
-col_modo, _ = st.columns([2, 3])
-with col_modo:
-    modo = st.radio(
-        "Fuente",
-        ["📁 Subir archivo", "📷 Usar cámara"],
-        label_visibility="collapsed",
-        horizontal=True,
-    )
-
 img_bgr = None
-if modo == "📁 Subir archivo":
-    uploaded = st.file_uploader(
-        "Arrastra tu imagen aquí o haz clic para buscar",
-        type=["png", "jpg", "jpeg"],
-        label_visibility="collapsed",
-    )
-    if uploaded is not None:
-        img_bgr = _bytes_to_bgr(uploaded.read())
-else:
-    camera_photo = st.camera_input("Toma una foto del tablero")
-    if camera_photo is not None:
-        img_bgr = _bytes_to_bgr(camera_photo.read())
+uploaded = st.file_uploader(
+    "Arrastra tu imagen aquí o haz clic para buscar",
+    type=["png", "jpg", "jpeg"],
+    label_visibility="collapsed",
+)
+if uploaded is not None:
+    img_bgr = _bytes_to_bgr(uploaded.read())
 
 st.markdown('</div>', unsafe_allow_html=True)
 
@@ -683,7 +650,7 @@ if img_bgr is None:
     <div class="placeholder">
         <div class="ico">📸</div>
         <h3>Sube una imagen para empezar</h3>
-        <p>Arrastra un archivo o usa la cámara para capturar el puzzle</p>
+        <p>Arrastra un archivo con la imagen del puzzle</p>
     </div>
     """, unsafe_allow_html=True)
     st.stop()
